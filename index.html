@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<head> <title>To do List</title>
+
+	<script src="js/angular.js"></script>
+</head>
+<body>
+ <h3>SIMPLE TODOLIST</h3>
+	<script>
+		var todolist = angular.module("todolist",[]);
+                 todolist.controller("t_con",function($scope){
+			$scope.list=['Study','Pay bills','Playing','Coding'];
+			$scope.add_item=function(){
+				$scope.list.push($scope.get_item);
+			}
+			$scope.delete=function(del_id){
+				$scope.list.splice(del_id,1); /*using splice function*/
+			}
+		});
+	</script>
+    <div ng-app="todolist" ng-controller="t_con">  
+	<ul>
+		<li ng-repeat="x in list">{{x}}<span ng-click="delete($index);">&times;<span></li>
+	</ul>
+	<input type="text" ng-model="get_item">
+	<button ng-click="add_item();">Add an item </button>
+    </div>
+</body>
+</html>
